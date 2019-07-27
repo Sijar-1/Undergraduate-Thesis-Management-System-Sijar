@@ -1,0 +1,34 @@
+
+spring:
+  profiles:
+    active: dev
+---
+server:
+  servlet:
+    context-path: /utms
+
+
+spring:
+  #静态资源文件访问位置前缀
+  #mvc.static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+  messages:
+    basename: i18n.login
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/read_data?useUnocode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    favicon:
+      enabled: false
+logging:
+  level.com.ecust.utms: trace
+  file: utms.log
+  #logging.patter.console:  在控制台输出的日志的格式
+---
+spring:
+  profile: prod
+
