@@ -8,13 +8,13 @@
     </script>
     <!-- Bootstrap CSS -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="../../static/css/my1.css">
+     <link rel="stylesheet" type="text/css" href="static/css/my1.css">
      <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
-    <script type="text/JavaScript" src="../../static/js/Message.js">
+    <script type="text/JavaScript" src="static/js/Message.js">
     </script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <title>消息</title>
@@ -73,31 +73,46 @@
 
  <div class="col-md-10">
 
-     <div class="main_pane row  myMessage">
+    <table class="table table-striped">
+        <caption id="d1" style="font-size: 25px; color:rgb(62,100,47);" class="text-center"><b>系统公告</b></caption>
 
-         <table class="table table-striped">
-             <caption id="d1" style="font-size: 25px; color: rgb(62, 100, 47);"
-                      class="text-center">
-                 <b>系统公告</b>
-             </caption>
-
-
-             <thead class="theadcenter">
-             <tr>
-                 <th>公告</th>
-                 <th>时间</th>
-                 <th>操作</th>
-             </tr>
-             </thead>
-             <tbody>
-             <tr th:each="ans : ${anns}">
-                 <td th:text="${ans.getTitle()}">0001名称</td>
-                 <td th:text="${#dates.format(ans.getDateTime(),'yyyy-MM-dd HH:mm:ss')}">2019/6/19 10：56</td>
-                 <td><a th:href="'/Student/messageInfo?AID='+${ans.getAID()}" target="_blank">查看详情</a></td>
-             </tr>
-             </tbody>
-         </table>
-     </div>
+         <thead class="theadcenter">
+           <tr>
+             <th>公告</th>
+             <th>时间</th>
+             <th colspan="3">附件</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td>0001名称</td>
+             <td>2019/6/19 10：56</td>
+              <td >附件1</td>
+             <td>附件2</td>
+             <td>附件3</td>
+           </tr>
+           <tr>
+             <td>0002名称</td>
+             <td>2019/6/19 10：56</td>
+             <td colspan="3">附件2</td>
+           </tr>
+           <tr>
+             <td>0003名称</td>
+             <td>2019/6/19 10：56</td>
+             <td > 附件3</td>
+             <td colspan="2"> 附件10</td>
+           </tr>
+            <tr>
+             <td>0004名称</td>
+             <td>2019/6/19 10：56</td>
+             <td colspan="3">附件4</td>
+              <tr>
+             <td>0005名称</td>
+             <td>2019/6/19 10：56</td>
+             <td colspan="3">附件5</td>
+           </tr>
+         </tbody>
+       </table>
        <nav aria-label="Page navigation">
           <ul class="pagination1">
             <li>
@@ -105,8 +120,8 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
+            <li><a href="#" >1</a></li>
+            <li><a href="#" class="active">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
 

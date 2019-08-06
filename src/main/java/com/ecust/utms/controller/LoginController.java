@@ -1,5 +1,6 @@
 package com.ecust.utms.controller;
 
+import com.ecust.utms.exception.UserNotExistException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,16 +16,17 @@ import java.util.Map;
 public class LoginController {
     @RequestMapping("/login2")
     public String login2(){
-        //classpath:/templates/login2.html
         return "login2";
     }
 
-    //@RequestMapping(value = "/user/login",method= RequestMethod.POST)
-   @PostMapping(value = "/user/login")
+   @PostMapping(value = "login")
     public String login(@RequestParam("userID") String userID, @RequestParam("inputPassword") String pwd,
                         @RequestParam("user") String usertype, Map<String,Object> map, HttpSession session){
-        if("Student".equals(usertype)&&!StringUtils.isEmpty(userID)&&"123456".equals(pwd)){
-            return "Student/message";
+
+        if("Student".equals(usertype)&&!StringUtils.isEmpty(userID)&&"1".equals(pwd)){
+            //登陆成功，防止表单重复提交，可以重定向到主页
+            session.setAttribute("loginuser",userID);
+            return "redirect:/main_S.html";
         }
         else{
           map.put("msg","用户名密码错误");
@@ -32,21 +34,16 @@ public class LoginController {
        }
     }
 
-    @RequestMapping("/person")
-    public  String Sperson(){
-        return "Student/person2";
+    @RequestMapping("/hello")
+    public String hello(@RequestParam("user") String user){
+        if(user.equals("aaa")){
+            throw new UserNotExistException();
+        }
+        return "hello world";
     }
 
 
-    @RequestMapping("/message")
-    public  String Smessage(){
-        return "Student/message";
-    }
 
-   /* @RequestMapping("/login2")
-    public String login2(){
-        //classpath:/templates/login2.html
-        return "login2";
-    }*/
+
 
 }

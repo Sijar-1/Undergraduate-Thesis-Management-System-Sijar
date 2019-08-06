@@ -9,31 +9,23 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>登陆</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-            background: url(static/img/watermelon.jpg) no-repeat fixed;
-            background-size: cover;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
 <body class="text-center">
 
 <div class="col-md-12 column" style="margin-top: 110px; font-family: 华文行楷; color:white">
-    <h1>毕业论文管理系统</h1>
+    <h1>华东理工大学论文系统</h1>
 </div>
 
 
-<form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/user/login}" method="post" id="loginForm">
+<form class="form-signin" style="margin-top: 20px;" action="message.html" th:action="@{/login}" method="post" id="loginForm">
     <div align="center">
         <h2 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}" style="color:white">Please sign in</h2>
-        <label class="sr-only col-md-5" for="userID" th:text="#{login.userID}">username</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="userID" name="userID" placeholder="UserID" th:placeholder="#{login.userID}" required="" autofocus="">
+        <label class="sr-only col-md-5" for="userID" th:text="#{login.userID}">userID</label>
+        <input style="text-align:center;" class="form-control col-md-3" id="userID" name="userID" placeholder="Username" th:placeholder="#{login.userID}" required="" autofocus="">
     </div>
     <div align="center" style="margin-top: 10px;">
         <label class="sr-only" for="inputPassword" th:text="#{login.password}">Password</label>
-        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword"
-               name="inputPassword" type="password" placeholder="Password" th:placeholder="#{login.password}" required="">
+        <input style="text-align:center;" class="form-control col-md-3" id="inputPassword" name="inputPassword" type="password" placeholder="Password" th:placeholder="#{login.password}" required="">
     </div>
     <div class="checkbox mb-3" style="margin-top: 10px;">
         <p style="color:red" th:text="${msg}" th:if="${not#strings.isEmpty(msg)}"></p>

@@ -19,7 +19,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         add("DELETE");
         add("PUT");
     }};
-
+    //目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 放行POST、DELETE、PUT请求

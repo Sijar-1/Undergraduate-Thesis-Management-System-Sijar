@@ -9,13 +9,11 @@ server:
 
 
 spring:
-  #静态资源文件访问位置前缀
-  #mvc.static-path-pattern: /static/**
+  profiles: dev
   thymeleaf:
     cache: false
   messages:
     basename: i18n.login
-  profiles: dev
   datasource:
     url: jdbc:mysql://localhost:3306/read_data?useUnocode=true&characterEncoding=UTF-8&useSSL=false
     username: root
@@ -24,11 +22,15 @@ spring:
   mvc:
     favicon:
       enabled: false
+    #静态资源文件访问位置前缀
+    # 当访问static/img/image.jpg时原本的默认“/**”会去classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/下查找文件
+    static-path-pattern: /static/**
+   # static-locations: classpath:/static/
 logging:
   level.com.ecust.utms: trace
   file: utms.log
   #logging.patter.console:  在控制台输出的日志的格式
 ---
 spring:
-  profile: prod
+  profiles: prod
 
